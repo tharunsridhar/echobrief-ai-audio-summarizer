@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoBrief</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <main class="shell">
+        <section class="workspace" aria-labelledby="page-title">
+            <header class="topbar">
+                <div class="brand">
+                    <span class="brand-mark" aria-hidden="true">EB</span>
+                    <div>
+                        <p class="eyebrow">Speech to summary</p>
+                        <h1 id="page-title">EchoBrief</h1>
+                    </div>
+                </div>
+                <div class="format-pills" aria-label="Supported formats">
+                    <span>MP3</span>
+                    <span>M4A</span>
+                </div>
+            </header>
+
+            <p class="subtitle">Turn long audio into a readable transcript, concise summary, and downloadable notes.</p>
+
+            <form id="uploadForm" class="upload-panel">
+                <label id="dropZone" class="drop-zone" for="audioFile">
+                    <input id="audioFile" type="file" accept=".mp3,.m4a,audio/mp3,audio/mp4,audio/x-m4a" hidden>
+                    <span class="upload-icon" aria-hidden="true">+</span>
+                    <span id="fileLabel" class="file-label">Choose audio file</span>
+                    <span class="file-hint">Drop audio here or browse from your device</span>
+                </label>
+
+                <div class="actions">
+                    <button id="submitButton" type="submit">Generate Brief</button>
+                    <button id="clearButton" type="button" class="secondary">Clear</button>
+                </div>
+            </form>
+
+            <div id="status" class="status" role="status" aria-live="polite"></div>
+            <section id="progressPanel" class="progress-panel" aria-label="Processing progress" hidden>
+                <div class="progress-meta">
+                    <span id="progressLabel">Preparing audio...</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div class="progress-steps">
+                    <span class="progress-step" data-step="upload">Upload</span>
+                    <span class="progress-step" data-step="transcribe">Transcribe</span>
+                    <span class="progress-step" data-step="summarize">Summarize</span>
+                    <span class="progress-step" data-step="save">Save files</span>
+                </div>
+                <p id="elapsedTime" class="elapsed-time">Elapsed: 0s</p>
+            </section>
+
+            <section id="results" class="results" hidden>
+                <article class="result-block">
+                    <div class="section-heading">
+                        <h2>Summary</h2>
+                        <div class="result-actions">
+                            <a id="summaryDownload" class="download-button" href="#" download>Download</a>
+                            <button class="copy-button" type="button" data-copy="summaryText">Copy</button>
+                        </div>
+                    </div>
+                    <pre id="summaryText"></pre>
+                </article>
+
+                <article class="result-block">
+                    <div class="section-heading">
+                        <h2>Transcript</h2>
+                        <div class="result-actions">
+                            <a id="transcriptDownload" class="download-button" href="#" download>Download</a>
+                            <button class="copy-button" type="button" data-copy="transcriptText">Copy</button>
+                        </div>
+                    </div>
+                    <pre id="transcriptText"></pre>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <script src="../component/app.js"></script>
+</body>
+</html>
