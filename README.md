@@ -1,67 +1,250 @@
 # EchoBrief
 
-EchoBrief is an AI-powered audio summarizer. It accepts MP3 and M4A files, transcribes speech with Faster-Whisper, and generates a professional summary with Gemini.
+EchoBrief is an AI-powered audio transcription and summarization platform built with FastAPI, Faster-Whisper, and Gemini AI.
 
-## Features
+The application accepts MP3 and M4A audio files, converts speech into text using Whisper AI, and generates concise professional summaries using Google Gemini.
 
-- Audio upload from browser
-- Whisper transcription
-- Gemini summary generation
-- Processing progress bar
-- Downloadable transcript and summary files
-- Clean FastAPI backend and static frontend
+---
 
-## Project Structure
+# Features
+
+- Audio upload support
+- MP3 and M4A processing
+- AI speech-to-text transcription
+- AI-generated summaries
+- Professional transcript cleanup
+- Downloadable transcript files
+- Downloadable summary files
+- Progress tracking UI
+- Drag and drop frontend
+- FastAPI backend architecture
+- Gemini AI integration
+- Responsive frontend design
+
+---
+
+# Tech Stack
+
+## Backend
+- Python
+- FastAPI
+- Faster-Whisper
+- Google Gemini API
+- Uvicorn
+
+## Frontend
+- HTML
+- CSS
+- Vanilla JavaScript
+
+---
+
+# Project Architecture
 
 ```text
-backend/
-  main.py
-  whisper_service.py
-  llm_service.py
-  uploads/
-  transcripts/
-  summaries/
-
-frontend/
-  app/index.html
-  component/app.js
-  style/style.css
+Audio Upload
+     ↓
+FastAPI Backend
+     ↓
+Faster-Whisper
+     ↓
+Transcript Generation
+     ↓
+Gemini AI
+     ↓
+Professional Summary
+     ↓
+Downloadable Results
 ```
 
-## Setup
+---
 
-Install dependencies:
+# Project Structure
 
-```powershell
+```text
+ai-audio-project/
+│
+├── backend/
+│   ├── main.py
+│   ├── whisper_service.py
+│   ├── llm_service.py
+│   ├── prompts.py
+│   ├── file_handler.py
+│   ├── requirements.txt
+│   ├── .env.example
+│   │
+│   ├── uploads/
+│   ├── transcripts/
+│   └── summaries/
+│
+├── frontend/
+│   ├── app/
+│   │   └── index.html
+│   │
+│   ├── component/
+│   │   └── app.js
+│   │
+│   └── style/
+│       └── style.css
+│
+└── README.md
+```
+
+---
+
+# Installation
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/tharunsridhar/echobrief-ai-audio-summarizer.git
+
+cd echobrief-ai-audio-summarizer
+```
+
+---
+
+## 2. Create Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+Activate environment:
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+---
+
+## 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-Create your environment file:
+---
 
-```powershell
-copy backend\.env.example backend\.env
+# Environment Variables
+
+Create:
+
+```text
+backend/.env
 ```
 
-Add your Gemini API key:
+Add:
 
 ```env
-GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-2.5-flash
 ```
 
-Run the backend:
+---
 
-```powershell
+# Run Backend
+
+```bash
 cd backend
-python -m uvicorn main:app --host 127.0.0.1 --port 8000
+
+uvicorn main:app --reload
 ```
 
-Open the frontend:
+Backend runs on:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+# Open Frontend
+
+Open in browser:
 
 ```text
 http://127.0.0.1:8000/frontend/app/index.html
 ```
 
-## GitHub Safety
+---
 
-The real `.env`, virtual environment, uploaded audio, generated transcripts, and generated summaries are ignored by `.gitignore`.
+# API Endpoint
+
+## Upload Audio
+
+```http
+POST /upload
+```
+
+Supported formats:
+- MP3
+- M4A
+
+Response:
+
+```json
+{
+  "filename": "audio.m4a",
+  "transcription": "Transcript text...",
+  "summary": "Summary text..."
+}
+```
+
+---
+
+# AI Components
+
+## Faster-Whisper
+
+Used for:
+- speech recognition
+- transcription
+- local AI inference
+
+---
+
+## Gemini AI
+
+Used for:
+- transcript cleanup
+- grammar correction
+- concise summarization
+- key point extraction
+
+---
+
+# Future Improvements
+
+- Live microphone recording
+- Speaker diarization
+- Multi-language support
+- Cloud deployment
+- User authentication
+- AI meeting notes
+- Timestamp summaries
+- PDF export
+- Vector search memory
+
+---
+
+# GitHub Safety
+
+The following are excluded using `.gitignore`:
+
+- `.venv`
+- `.env`
+- `node_modules`
+- uploads
+- transcripts
+- summaries
+
+---
+
+# Author
+
+Tharun Sridhar Natarajan
+
+---
